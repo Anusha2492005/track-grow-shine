@@ -25,6 +25,12 @@
   --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
   --gradient-hero: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
   --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--secondary)));
+  
+  /* Role-specific gradients */
+  --gradient-student: linear-gradient(135deg, #3b82f6, #6366f1);
+  --gradient-student-text: linear-gradient(135deg, #1e40af, #3730a3);
+  --gradient-faculty: linear-gradient(135deg, #10b981, #059669);
+  --gradient-faculty-text: linear-gradient(135deg, #047857, #064e3b);
 
   /* Shadows */
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
@@ -82,6 +88,24 @@ body {
 
 .signup-bg {
   background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%23f093fb;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%23f5576c;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23bg2)"/><g opacity="0.1"><polygon points="100,100 200,50 300,150 200,200" fill="white"/><polygon points="800,200 950,150 1000,300 850,350" fill="white"/><polygon points="150,500 300,450 350,600 200,650" fill="white"/></g></svg>');
+}
+
+/* Student-specific backgrounds */
+.student-login-bg {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="studentLogin" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%233b82f6;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%236366f1;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23studentLogin)"/><g opacity="0.15"><circle cx="150" cy="200" r="80" fill="white"/><circle cx="950" cy="150" r="120" fill="white"/><circle cx="250" cy="650" r="60" fill="white"/><circle cx="1050" cy="600" r="100" fill="white"/><rect x="400" y="100" width="60" height="60" rx="10" fill="white"/><rect x="700" y="500" width="80" height="80" rx="15" fill="white"/></g></svg>');
+}
+
+.student-signup-bg {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="studentSignup" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%236366f1;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%238b5cf6;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23studentSignup)"/><g opacity="0.12"><polygon points="100,150 180,100 220,180 140,230" fill="white"/><polygon points="900,200 1000,150 1050,250 950,300" fill="white"/><polygon points="200,550 300,500 350,600 250,650" fill="white"/><circle cx="600" cy="300" r="40" fill="white"/><circle cx="800" cy="600" r="50" fill="white"/></g></svg>');
+}
+
+/* Faculty-specific backgrounds */
+.faculty-login-bg {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="facultyLogin" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2310b981;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%230d9488;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23facultyLogin)"/><g opacity="0.15"><rect x="100" y="100" width="100" height="100" rx="20" fill="white"/><rect x="1000" y="200" width="120" height="120" rx="25" fill="white"/><rect x="200" y="600" width="80" height="80" rx="15" fill="white"/><rect x="900" y="650" width="90" height="90" rx="18" fill="white"/><circle cx="500" cy="200" r="60" fill="white"/><circle cx="700" cy="550" r="70" fill="white"/></g></svg>');
+}
+
+.faculty-signup-bg {
+  background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800"><defs><linearGradient id="facultySignup" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:%2310b981;stop-opacity:0.8"/><stop offset="100%" style="stop-color:%2306b6d4;stop-opacity:0.8"/></linearGradient></defs><rect width="1200" height="800" fill="url(%23facultySignup)"/><g opacity="0.12"><hexagon points="150,100 200,130 200,190 150,220 100,190 100,130" fill="white"/><hexagon points="950,150 1000,180 1000,240 950,270 900,240 900,180" fill="white"/><hexagon points="250,550 300,580 300,640 250,670 200,640 200,580" fill="white"/><rect x="600" y="250" width="60" height="60" rx="30" fill="white"/><rect x="800" y="500" width="70" height="70" rx="35" fill="white"/></g></svg>');
 }
 
 /* Layout Classes */
@@ -387,6 +411,22 @@ body {
   background: var(--gradient-primary);
 }
 
+.bg-gradient-student {
+  background: var(--gradient-student);
+}
+
+.bg-gradient-student-text {
+  background: var(--gradient-student-text);
+}
+
+.bg-gradient-faculty {
+  background: var(--gradient-faculty);
+}
+
+.bg-gradient-faculty-text {
+  background: var(--gradient-faculty-text);
+}
+
 .bg-clip-text {
   background-clip: text;
   -webkit-background-clip: text;
@@ -424,6 +464,10 @@ body {
   background-color: rgb(255 237 213);
 }
 
+.bg-emerald-50\/10 {
+  background-color: rgb(236 253 245 / 0.1);
+}
+
 .bg-muted {
   background-color: hsl(var(--muted));
 }
@@ -442,6 +486,10 @@ body {
 
 .border-border {
   border-color: hsl(var(--border));
+}
+
+.border-emerald-300\/30 {
+  border-color: rgb(110 231 183 / 0.3);
 }
 
 /* Sizing */
@@ -626,6 +674,28 @@ body {
 }
 
 .btn-success:hover {
+  box-shadow: 0 0 40px rgb(16 185 129 / 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-student {
+  background: var(--gradient-student);
+  color: white;
+  box-shadow: 0 10px 30px -10px rgb(59 130 246 / 0.3);
+}
+
+.btn-student:hover {
+  box-shadow: 0 0 40px rgb(59 130 246 / 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-faculty {
+  background: var(--gradient-faculty);
+  color: white;
+  box-shadow: 0 10px 30px -10px rgb(16 185 129 / 0.3);
+}
+
+.btn-faculty:hover {
   box-shadow: 0 0 40px rgb(16 185 129 / 0.4);
   transform: translateY(-1px);
 }
