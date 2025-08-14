@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Student Skill Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="graduation-cap" class="h-8 w-8 text-primary"></i>
+                    <span class="text-xl font-bold">Student Skill Tracker</span>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="nav-link active">Dashboard</a>
+                    <a href="#" class="nav-link" id="navSkills">Skills</a>
+                    <a href="#" class="nav-link" id="navProjects">Projects</a>
+                    <a href="#" class="nav-link" id="navResume">Resume</a>
+                    <a href="#" class="nav-link" id="navProfile">Profile</a>
+                </div>
+                
+                <div class="flex items-center gap-4">
+                    <button class="p-2 text-muted-foreground hover:text-foreground">
+                        <i data-lucide="bell" class="h-5 w-5"></i>
+                    </button>
+                    <div class="relative">
+                        <button class="flex items-center gap-2 p-2 rounded-lg hover:bg-muted" id="userMenu">
+                            <div class="w-8 h-8 bg-gradient-primary rounded-full flex items-center justify-center">
+                                <span class="text-white text-sm font-medium" id="userInitials">JS</span>
+                            </div>
+                            <span class="hidden md:block" id="userName">John Student</span>
+                            <i data-lucide="chevron-down" class="h-4 w-4"></i>
+                        </button>
+                        
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <a href="#" class="dropdown-item">
+                                <i data-lucide="user" class="h-4 w-4"></i>
+                                Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i data-lucide="settings" class="h-4 w-4"></i>
+                                Settings
+                            </a>
+                            <hr class="my-1 border-border">
+                            <a href="#" class="dropdown-item text-destructive" id="logoutBtn">
+                                <i data-lucide="log-out" class="h-4 w-4"></i>
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="min-h-screen bg-background pt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Welcome Section -->
+            <div class="mb-8">
+                <h1 class="text-3xl font-bold mb-2" id="welcomeMessage">Welcome back, John!</h1>
+                <p class="text-muted-foreground">Here's your skill tracking overview and recent activity.</p>
+            </div>
+
+            <!-- Student Dashboard -->
+            <div id="studentDashboard">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Total Skills</p>
+                                    <p class="text-2xl font-bold">24</p>
+                                </div>
+                                <div class="p-3 bg-blue-100 rounded-full">
+                                    <i data-lucide="award" class="h-6 w-6 text-blue-600"></i>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex items-center text-sm">
+                                <span class="text-green-600">+3</span>
+                                <span class="text-muted-foreground ml-1">this month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Projects</p>
+                                    <p class="text-2xl font-bold">8</p>
+                                </div>
+                                <div class="p-3 bg-green-100 rounded-full">
+                                    <i data-lucide="folder" class="h-6 w-6 text-green-600"></i>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex items-center text-sm">
+                                <span class="text-green-600">+2</span>
+                                <span class="text-muted-foreground ml-1">this month</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Certificates</p>
+                                    <p class="text-2xl font-bold">12</p>
+                                </div>
+                                <div class="p-3 bg-purple-100 rounded-full">
+                                    <i data-lucide="trophy" class="h-6 w-6 text-purple-600"></i>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex items-center text-sm">
+                                <span class="text-green-600">+1</span>
+                                <span class="text-muted-foreground ml-1">this week</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Placement Score</p>
+                                    <p class="text-2xl font-bold">78%</p>
+                                </div>
+                                <div class="p-3 bg-orange-100 rounded-full">
+                                    <i data-lucide="target" class="h-6 w-6 text-orange-600"></i>
+                                </div>
+                            </div>
+                            <div class="mt-2 flex items-center text-sm">
+                                <span class="text-green-600">+5%</span>
+                                <span class="text-muted-foreground ml-1">improvement</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+                    <div class="card card-elevated">
+                        <div class="card-header">
+                            <h3 class="text-lg font-semibold">Quick Actions</h3>
+                        </div>
+                        <div class="card-content p-6">
+                            <div class="grid grid-cols-2 gap-4">
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="plus" class="h-4 w-4"></i>
+                                    Add Skill
+                                </button>
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="upload" class="h-4 w-4"></i>
+                                    Upload Project
+                                </button>
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="file-text" class="h-4 w-4"></i>
+                                    Generate Resume
+                                </button>
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="certificate" class="h-4 w-4"></i>
+                                    Add Certificate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-header">
+                            <h3 class="text-lg font-semibold">Skill Progress</h3>
+                        </div>
+                        <div class="card-content p-6">
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>JavaScript</span>
+                                        <span>85%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 85%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>React</span>
+                                        <span>72%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 72%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-sm mb-1">
+                                        <span>Python</span>
+                                        <span>68%</span>
+                                    </div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 68%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card card-elevated">
+                    <div class="card-header">
+                        <h3 class="text-lg font-semibold">Recent Activity</h3>
+                    </div>
+                    <div class="card-content p-6">
+                        <div class="space-y-4">
+                            <div class="flex items-center gap-4">
+                                <div class="p-2 bg-green-100 rounded-full">
+                                    <i data-lucide="plus-circle" class="h-4 w-4 text-green-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Added new skill: Node.js</p>
+                                    <p class="text-sm text-muted-foreground">2 hours ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="p-2 bg-blue-100 rounded-full">
+                                    <i data-lucide="upload" class="h-4 w-4 text-blue-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Uploaded project: E-commerce Website</p>
+                                    <p class="text-sm text-muted-foreground">1 day ago</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-4">
+                                <div class="p-2 bg-purple-100 rounded-full">
+                                    <i data-lucide="trophy" class="h-4 w-4 text-purple-600"></i>
+                                </div>
+                                <div class="flex-1">
+                                    <p class="font-medium">Earned certificate: AWS Cloud Practitioner</p>
+                                    <p class="text-sm text-muted-foreground">3 days ago</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faculty Dashboard -->
+            <div id="facultyDashboard" style="display: none;">
+                <!-- Stats Cards for Faculty -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Total Students</p>
+                                    <p class="text-2xl font-bold">156</p>
+                                </div>
+                                <div class="p-3 bg-blue-100 rounded-full">
+                                    <i data-lucide="users" class="h-6 w-6 text-blue-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Placement Ready</p>
+                                    <p class="text-2xl font-bold">89</p>
+                                </div>
+                                <div class="p-3 bg-green-100 rounded-full">
+                                    <i data-lucide="check-circle" class="h-6 w-6 text-green-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">Average Score</p>
+                                    <p class="text-2xl font-bold">76%</p>
+                                </div>
+                                <div class="p-3 bg-purple-100 rounded-full">
+                                    <i data-lucide="trending-up" class="h-6 w-6 text-purple-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-content p-6">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <p class="text-sm font-medium text-muted-foreground">New Registrations</p>
+                                    <p class="text-2xl font-bold">12</p>
+                                </div>
+                                <div class="p-3 bg-orange-100 rounded-full">
+                                    <i data-lucide="user-plus" class="h-6 w-6 text-orange-600"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Faculty Tools -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <div class="card card-elevated">
+                        <div class="card-header">
+                            <h3 class="text-lg font-semibold">Student Search & Filter</h3>
+                        </div>
+                        <div class="card-content p-6">
+                            <div class="space-y-4">
+                                <input type="text" placeholder="Search students..." class="input">
+                                <select class="input">
+                                    <option>Filter by Skills</option>
+                                    <option>JavaScript</option>
+                                    <option>Python</option>
+                                    <option>Java</option>
+                                </select>
+                                <select class="input">
+                                    <option>Filter by CGPA</option>
+                                    <option>Above 8.0</option>
+                                    <option>7.0 - 8.0</option>
+                                    <option>Below 7.0</option>
+                                </select>
+                                <button class="btn btn-primary w-full">Search Students</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-elevated">
+                        <div class="card-header">
+                            <h3 class="text-lg font-semibold">Quick Actions</h3>
+                        </div>
+                        <div class="card-content p-6">
+                            <div class="grid grid-cols-1 gap-4">
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="download" class="h-4 w-4"></i>
+                                    Export Student Data
+                                </button>
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="bell" class="h-4 w-4"></i>
+                                    Send Notification
+                                </button>
+                                <button class="btn btn-outline flex items-center gap-2">
+                                    <i data-lucide="bar-chart-3" class="h-4 w-4"></i>
+                                    Generate Reports
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Check user type and show appropriate dashboard
+        const userType = localStorage.getItem('userType') || 'student';
+        const userEmail = localStorage.getItem('userEmail') || 'john.student@university.edu';
+        
+        // Update user name and initials
+        const firstName = userEmail.split('@')[0].split('.')[0];
+        const lastName = userEmail.split('@')[0].split('.')[1] || '';
+        const fullName = firstName.charAt(0).toUpperCase() + firstName.slice(1) + 
+                        (lastName ? ' ' + lastName.charAt(0).toUpperCase() + lastName.slice(1) : '');
+        const initials = firstName.charAt(0).toUpperCase() + (lastName ? lastName.charAt(0).toUpperCase() : '');
+        
+        document.getElementById('userName').textContent = fullName;
+        document.getElementById('userInitials').textContent = initials;
+        document.getElementById('welcomeMessage').textContent = `Welcome back, ${firstName.charAt(0).toUpperCase() + firstName.slice(1)}!`;
+
+        // Show appropriate dashboard
+        if (userType === 'faculty') {
+            document.getElementById('studentDashboard').style.display = 'none';
+            document.getElementById('facultyDashboard').style.display = 'block';
+            
+            // Update navigation for faculty
+            document.getElementById('navSkills').textContent = 'Students';
+            document.getElementById('navProjects').textContent = 'Reports';
+            document.getElementById('navResume').style.display = 'none';
+        }
+
+        // Dropdown menu functionality
+        const userMenu = document.getElementById('userMenu');
+        const dropdownMenu = document.getElementById('dropdownMenu');
+
+        userMenu.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('show');
+        });
+
+        document.addEventListener('click', () => {
+            dropdownMenu.classList.remove('show');
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', (e) => {
+            e.preventDefault();
+            localStorage.removeItem('userType');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'index.html';
+        });
+
+        // Toast functionality
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Check if user is logged in
+        if (!localStorage.getItem('userType')) {
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
