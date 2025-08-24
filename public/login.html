@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Skill Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/lucide/0.462.0/lucide.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="min-h-screen flex items-center justify-center relative">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-cover bg-center bg-no-repeat login-bg">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20"></div>
+        </div>
+        
+        <!-- Content -->
+        <div class="relative z-10 w-full max-w-md p-6">
+            <div class="card card-glass backdrop-blur-md border-white/20">
+                <div class="card-header text-center">
+                    <div class="mx-auto mb-4 p-3 bg-gradient-primary rounded-full w-16 h-16 flex items-center justify-center">
+                        <i data-lucide="graduation-cap" class="h-8 w-8 text-white"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold bg-gradient-hero bg-clip-text text-transparent mb-2">
+                        Student Skill Tracker
+                    </h1>
+                    <p class="text-foreground/80">
+                        Sign in to your account to continue
+                    </p>
+                </div>
+                
+                <div class="card-content">
+                    <form id="loginForm" class="space-y-4">
+                        <div class="space-y-2">
+                            <label for="userType" class="block text-sm font-medium">I am a</label>
+                            <select id="userType" class="input bg-white/50 border-white/30">
+                                <option value="">Select user type</option>
+                                <option value="student">Student</option>
+                                <option value="faculty">Faculty / Placement Officer</option>
+                            </select>
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="email" class="block text-sm font-medium">Email</label>
+                            <input
+                                id="email"
+                                type="email"
+                                placeholder="Enter your email"
+                                class="input bg-white/50 border-white/30"
+                                required
+                            />
+                        </div>
+
+                        <div class="space-y-2">
+                            <label for="password" class="block text-sm font-medium">Password</label>
+                            <div class="relative">
+                                <input
+                                    id="password"
+                                    type="password"
+                                    placeholder="Enter your password"
+                                    class="input bg-white/50 border-white/30 pr-10"
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    id="togglePassword"
+                                    class="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                                >
+                                    <i data-lucide="eye" id="eyeIcon" class="h-4 w-4"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <button 
+                            type="submit" 
+                            class="btn btn-academic w-full"
+                            id="loginBtn"
+                        >
+                            Sign In
+                        </button>
+                    </form>
+
+                    <div class="mt-6 space-y-4">
+                        <div class="text-center">
+                            <a href="#" class="text-sm text-primary hover:text-primary-glow transition-smooth">
+                                Forgot your password?
+                            </a>
+                        </div>
+                        
+                        <div class="text-center text-sm text-foreground/70">
+                            New student? 
+                            <a href="signup.html" class="text-primary hover:text-primary-glow font-medium transition-smooth">
+                                Create an account
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <div class="toast-content">
+            <span id="toastMessage"></span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script>
+        lucide.createIcons();
+
+        // Password toggle functionality
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        const eyeIcon = document.getElementById('eyeIcon');
+
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            
+            eyeIcon.setAttribute('data-lucide', type === 'password' ? 'eye' : 'eye-off');
+            lucide.createIcons();
+        });
+
+        // Toast functionality
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toastMessage');
+            
+            toastMessage.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Form submission
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const userType = document.getElementById('userType').value;
+            const loginBtn = document.getElementById('loginBtn');
+            
+            if (!email || !password || !userType) {
+                showToast('Please fill in all fields and select user type.', 'error');
+                return;
+            }
+            
+            loginBtn.textContent = 'Signing in...';
+            loginBtn.disabled = true;
+            
+            // Simulate API call
+            setTimeout(() => {
+                if (email && password.length >= 6) {
+                    localStorage.setItem('userType', userType);
+                    localStorage.setItem('userEmail', email);
+                    showToast(`Welcome back! Redirecting to ${userType} dashboard...`);
+                    
+                    setTimeout(() => {
+                        window.location.href = 'dashboard.html';
+                    }, 1500);
+                } else {
+                    showToast('Invalid credentials. Please try again.', 'error');
+                    loginBtn.textContent = 'Sign In';
+                    loginBtn.disabled = false;
+                }
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
